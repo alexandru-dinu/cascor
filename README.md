@@ -1,16 +1,27 @@
 # Cascor
 
-	start with simple FC (784 + 1 x 10) network
+### Algorithm
 
-	repeat
-		train until no improvement can be made
-		save the state of weights up to this point
-		generate a set of hidden units candidates (current: 1)
+```
+start with simple FC (784 + 1 x 10) network
 
-		for each candidate c
-			maximize the correlation between c's input weights and network error
+repeat
 
-		insert the hidden unit with the maximum correlation
-    	freeze its input weights
-    	add a column of size (1, 10) to the output weights matrix
-	until there is no significant improvement
+	train until no improvement can be made
+	save the state of weights up to this point
+	generate a set of hidden units candidates (current: 1)
+
+	for each candidate c
+		maximize the correlation between c's input weights and network error
+
+	insert the hidden unit with the maximum correlation
+	freeze its input weights
+	add a column of size (1, 10) to the output weights matrix
+
+until no significant improvement
+```
+
+### Notes
+
+- trained on [MNIST dataset](http://yann.lecun.com/exdb/mnist/)
+- a [dataloader](https://github.com/alexandru-dinu/cascor/blob/master/src/data_loader.py) is provided
